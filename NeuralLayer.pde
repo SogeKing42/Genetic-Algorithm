@@ -8,13 +8,20 @@ class NeuralLayer{
   int size;
   int index;
   
+  NeuralLayer lastNL;
+  
   NeuralLayer(int siz, boolean inp, int ind){
+    lastNL = Brain.getLastNL(ind);
+    
     biases = new int[siz];
     activations = new double[siz];
-    weights = new double[siz][Brain.getLastNL(ind).length];
-      
+    weights = new double[siz][lastNL.length];
     
-    //set the weights double matrix equal to something
+    if(gen == 0){
+      randomize();
+    }else{
+    
+    }
     
     input = inp;
     index = ind;
@@ -28,8 +35,8 @@ class NeuralLayer{
     else{
       for(int i = 0; i < size;i++){
         double sum;
-        for(int j = 0; j < Brain.getLastNL(index).size; j++){
-          sum += (Brain.getLastNL(index).get(j)) * (weights[i][j]) + biases[i]; //FIX BY SETTING ARRAY BEFORE, AND GRABBING HERE
+        for(int j = 0; j < lastNL.size(); j++){
+          sum += (lastNL.get(j)) * (weights[i][j]) + biases[i]; //FIX BY SETTING ARRAY BEFORE, AND GRABBING HERE
         }
         
         sum = sigmoid(sum);
@@ -37,6 +44,15 @@ class NeuralLayer{
       } 
     }
     
+  }
+  
+  void randomize(){
+    for(int i = 0; i < size; i++){
+      biases[i] = Math.round(random(0, 10));
+      for(int j = 0; j < weights[0].length; j++){
+        weights[i][j] = random(-10, 10);
+      }
+    }
   }
   
   double[] getActivations(){

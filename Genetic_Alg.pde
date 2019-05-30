@@ -1,5 +1,6 @@
 Dino dino;
 ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
+ArrayList<Dino> testingDinos = new ArrayList<Dino>();
 
 //images
 PImage dinoRun1;
@@ -24,6 +25,7 @@ int minimumTimeBetweenObstacles = 60;
 int randomAddition = 0;
 int groundCounter = 0;
 
+public int gen = 0;
 
 ArrayList<Ground> grounds = new ArrayList<Ground>();
 ArrayList<Bird> birds = new ArrayList<Bird>();
@@ -184,6 +186,17 @@ double[] getData(){
   data[7] = 1.0; //Bias
   
   return data;
+}
+
+void makeTheDinos(){
+  for(int i = 0; i < 100; i++){
+    testingDinos.set(i, new Dino());
+  }
+  
+}
+
+void learning(){
+  
 }
 
 double sigmoid(double x){

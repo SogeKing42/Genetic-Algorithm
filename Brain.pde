@@ -1,9 +1,7 @@
 class Brain{
   ArrayList<NeuralLayer> neuralNet;
   
-  int generation;
-  
-  Brain(int gen){
+  Brain(){
     if(gen < 5){
       neuralNet = new ArrayList<NeuralLayer>(2);
       neuralNet.set(1, new NeuralLayer(2, false, 1)); //initializes a layer with 2 nodes, false for input layer, and given its index of 1
@@ -23,16 +21,20 @@ class Brain{
     }
     neuralNet.set(0, new NeuralLayer(8, true, 0)); //initializes input layer with 8 nodes
     
-    generation = gen;
-    
   }
   
-  NeuralLayer getLastNL(int ind){
+  public NeuralLayer getLastNL(int ind){
     if(ind == 0){
       return neuralNet.get(0);
     }
     return neuralNet.get(ind - 1);
   
+  }
+  
+  int fireTheNet(){
+    int choice = 0;
+    //Causes the neural net to give a "response"
+    return choice;
   }
   
 

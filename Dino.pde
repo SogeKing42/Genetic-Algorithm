@@ -31,10 +31,12 @@ class Dino{
   int localRandomAddition = 0;
 
   boolean duck= false;
+  
+  Brain dinoBrain;
 
   
   Dino(){
-  
+    dinoBrain = new Brain();
   }
   
 void show() {
